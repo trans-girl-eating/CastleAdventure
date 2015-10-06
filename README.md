@@ -1,2 +1,2 @@
 # CastleAdventure
-You can play this game by running the main code in your terminal app. If you need help, please contact me.
+Select 'open with' 'other' IDLE. Then click on 'run' 'run module' and there u go!
