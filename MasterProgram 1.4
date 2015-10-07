@@ -60,33 +60,37 @@ def Room3():
     global kobold
     global inventory
     print("You are now in what would, at first glance, look like a dungeon cell. There is a cot hanging from the side of the wall, and a stained glass window in the corner. Upon adjusting your eyes to the darkness, you begin to make out the figure of a sleeping Kobold on the ground. You also notice the glint of the golden sword laying on the cot. Unfortunately, the prison bars prevent you from absconding.")
-    ThreeChoice = input("So, What's the plan?")
-
-    if(ThreeChoice.lower()) == "take sword":
-        inventory.append("Gold Sword")
-        print("You grab the sword, and are holding it tightly in shaking hands")
-
-    if(ThreeChoice.lower()) == "attack kobold":
-        if "Gold Sword" in inventory:
-            
-            kobold -= 1
-            print("Just as the kobold wakes up to give you a faceful of scaley fist, your golden blade pierces it's small, draconic skull. As it slided down the sword, and bleeds to death on the ground, the prison bars disapear. When you leave the cell, you blink, and your in another room.")
-
-        else:
-            print("It does not appreciate such japery.")
-
-    if(ThreeChoice.lower()) == "break window":
-        print("The window shatters. Nothing happens.")
-
-    if(ThreeChoice.lower()) == "wake kobold":
-        print("The kobold wakes up, shrieks, and then goes back to sleep.")
-
-    if(kobold) == 0:
-        RoomFinish3 += 1
-
-    else:
-        Room3()
+    while(RoomFinish3) == 0:
         
+        ThreeChoice = input("So, What's the plan?")
+
+        if(ThreeChoice.lower()) == "take sword":
+            inventory.append("Gold Sword")
+            print("You grab the sword, and are holding it tightly in shaking hands")
+
+        if(ThreeChoice.lower()) == "attack kobold":
+            if "Gold Sword" in inventory:
+                
+                kobold -= 1
+                print("Just as the kobold wakes up to give you a faceful of scaley fist, your golden blade pierces it's small, draconic skull. As it slided down the sword, and bleeds to death on the ground, the prison bars disapear. When you leave the cell, you blink, and your in another room.")
+
+            else:
+                print("It does not appreciate such japery.")
+
+        if(ThreeChoice.lower()) == "break window":
+            print("The window shatters. Nothing happens.")
+
+        if(ThreeChoice.lower()) == "wake kobold":
+            print("The kobold wakes up, shrieks, and then goes back to sleep.")
+
+        if(kobold) == 0:
+            RoomFinish3 += 1
+
+            
+    print("")
+    Room4()
+
+
 
     
         
@@ -123,14 +127,72 @@ def Room2():
             time.sleep(1)
             print("There is an iron switch hidden in a copartment towards the back of the skull.")
             time.sleep(3)
+
+            
+    print("")
+    Room3()
             
                 
             
         
         
     
-    
+hatch = 0   
+def Room4():
+    global RoomFinish4
+    global inventory
+    global hatch
+    print("This hall is choked with corpses. The bodies of orcs and ogres lie in tangled heaps where they died, and the floor is sticky with dried blood. It looks like the orcs and ogres were fighting. Some side was the victor but you're not sure which one. The bodies are largely stripped of valuables, but a few broken weapons jut from the slain or lie discarded on the floor.")
+    print("There is a hatch on the ceiling, but it is too high to get to.")
+
+    while(RoomFinish4) == 0:
+        
+        FourChoice = input("What's the plan? ")
+
+        if(FourChoice.lower()) == "open hatch":
+            time.sleep(2)
+            print("You throw a cracked bow at the hatch, and it falls open.")
+            hatch += 1
+            time.sleep(1)
+
+        if(FourChoice.lower()) == "inspect bodies":
+            time.sleep(1)
+            print("They appear climbable.")
+            time.sleep(2)
+
+        if(FourChoice.lower()) == "climb bodies":
+            if(hatch) == 1:
+                
+                print("You scale the mountain of fallen orcs and go through the hatch.")
+                RoomFinish4 += 1
             
+
+            else:
+                print("You get to the hatch, but it is closed.")
+
+
+        if(RoomFinish4) == 1:
+            print("You have Escaped")
+            
+            
+            
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 def Room1():
     global RoomFinish1
     while(RoomFinish1) == 0:
@@ -218,6 +280,9 @@ def start():
 
     if(RoomNo) == 3:
         Room3()
+
+    if(RoomNo) == 4:
+        Room4()
 
 start()
 
