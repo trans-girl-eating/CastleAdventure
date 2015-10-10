@@ -10,6 +10,7 @@ def showStats():
     print("Int: " + str(Int))
     print("Chr: " + str(Chr))
     
+   
 characterName = input("What is your name? ")
 print(characterName)
 statList = [18, 14, 11, 10, 10, 9]
@@ -29,15 +30,16 @@ Int = (random.choice(statList))
 Chr = (random.choice(statList))
 
 showStats()
-print("Weapons: " + random.choice(weaponList) + ", " + random.choice(weaponList))
+print("Weapons Proficiencies: " + random.choice(weaponList) + ", " + random.choice(weaponList))
 print("")
 roomNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 RoomNo = (random.choice(roomNumber))
 inventory = []
+inventory.append("Iron Sword")
 
 
 
-print(RoomNo)
+
 
 RoomFinish1 = 0
 RoomFinish2 = 0
@@ -62,13 +64,13 @@ def Room3():
     print("You are now in what would, at first glance, look like a dungeon cell. There is a cot hanging from the side of the wall, and a stained glass window in the corner. Upon adjusting your eyes to the darkness, you begin to make out the figure of a sleeping Kobold on the ground. You also notice the glint of the golden sword laying on the cot. Unfortunately, the prison bars prevent you from absconding.")
     while(RoomFinish3) == 0:
         
-        ThreeChoice = input("So, What's the plan?")
+        ThreeChoice = input("So, What's the plan? ")
 
         if(ThreeChoice.lower()) == "take sword":
             inventory.append("Gold Sword")
             print("You grab the sword, and are holding it tightly in shaking hands")
 
-        if(ThreeChoice.lower()) == "attack kobold":
+        if(ThreeChoice.lower()) == "attack kobold" or "stab kobold" or "fight kobold":
             if "Gold Sword" in inventory:
                 
                 kobold -= 1
@@ -88,6 +90,7 @@ def Room3():
 
             
     print("")
+    time.sleep(4)
     Room4()
 
 
@@ -137,7 +140,43 @@ def Room2():
         
         
     
-hatch = 0   
+hatch = 0
+def Room5():
+    global inventory
+    global RoomFinish5
+    print("You are in a crypt, with stone walls and alabaster sarcophagi. There are three coffins. 1 with a dark aura, 2 with a green aura, 3 with a blue aura. What will you do?")
+    while(RoomFinish5 == 0):
+
+        FiveChoice = input("Which will you open? ")
+
+        if(FiveChoice) == "1":
+            print("There is a set of stairs. They lead to then next room.")
+            print("You have escaped.")
+            RoomFinish5 += 1
+            print("")
+            Room6()
+
+        if(FiveChoice) == "2":
+            print("There is nothing inside, but green residue. And a patch of grass.")
+
+        if(FiveChoice) == "3":
+            print("The third coffin is just filled with water. Weird.")
+
+        if(FiveChoice.lower()) == "drink water":
+            print("You drink from a coffin, u freak")
+
+
+            
+
+
+
+
+
+
+
+
+
+        
 def Room4():
     global RoomFinish4
     global inventory
@@ -173,8 +212,63 @@ def Room4():
 
         if(RoomFinish4) == 1:
             print("You have Escaped")
+            print("")
+    Room5()
+
+
+
+
+serpent = 1
+def Room6():
+    global serpent
+    global inventory
+    global RoomFinish6
+    print("You fall down an unseen cavern. And into an underground lake. There is a waterfall bombarding you. Suddenly, you see a scaly fin shooting towards you. A serpent bursts from the water. There is a blue door on a mini island in the lake.")
+    while(RoomFinish6 == 0):
+        SixChoice = input("So what's the plan? ")
+        
+        if(SixChoice.lower()) == "attack Serpent" or "fight serpent":
+            if "Gold Sword" in inventory:
+                
+                print("You swing your sword at the beast. YOU HIT! It appears it is wounded")
+                serpent -= 1
+
+
+            if "Iron Sword" in inventory:
+                print("You swing your sword at the beast. YOU HIT! It appears it is wounded")
+                serpent -= 1
+
+            else:
+                print("You fool! You are unarmed!")
+
+            if(serpent) == 0:
+                print("The serpent has been defeated!")
+
+
+            else:
+                print("Serpent attacks!")
+                time.sleep(2)
+                print("You have died")
+                start()
+
+        if(SixChoice.lower()) == "open door" or "go through door":
+            if(serpent) == 0:
+                print("You escaped the room!")
+                RoomFinish6 += 1
+                
+
+            else:
+                print("Serpent attacks!")
+                time.sleep(2)
+                print("You have died")
+                start()
+                
+           
+                
+
             
             
+                
             
         
         
@@ -268,7 +362,10 @@ def Room1():
 
 def start():
     global RoomNo
-           
+    print("The castle looms above you, it's ramparts glaring at you like the beady eyes of Yog-Sothoth himself. The adamantium gate that seperates you from your destiny opens with a clang. It is time you avenge your village...")
+    print("")
+    print(RoomNo)
+    print("")
     if(RoomNo) == 1:
         print("You are standing in a stone room, with iron torches lining the walls. There is a diamond-studded chest in the corner, with a large lock on it. Not to mention the large table and wooden door. Too bad there is a huge lock on the door.")
         Room1()
@@ -284,7 +381,16 @@ def start():
     if(RoomNo) == 4:
         Room4()
 
+    if(RoomNo) == 5:
+        Room5()
+
+    if(RoomNo) == 6:
+        Room6()
+
 start()
+
+
+
 
 
 
