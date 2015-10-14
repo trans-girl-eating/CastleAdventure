@@ -65,12 +65,13 @@ def Room3():
     while(RoomFinish3) == 0:
         
         ThreeChoice = input("So, What's the plan? ")
-
+        if(ThreeChoice.lower()) == "inventory":
+            print(inventory)
         if(ThreeChoice.lower()) == "take sword":
             inventory.append("Gold Sword")
             print("You grab the sword, and are holding it tightly in shaking hands")
 
-        if(ThreeChoice.lower()) == "attack kobold" or "stab kobold" or "fight kobold":
+        if((ThreeChoice.lower()) == "attack kobold" or ThreeChoice.lower() == "stab kobold" or ThreeChoice.lower() == "fight kobold"):
             if "Gold Sword" in inventory:
                 
                 kobold -= 1
@@ -104,7 +105,6 @@ def Room2():
     global roomNumber
     global RoomFinish2
     print("")
-    print("2")
     print("")
     print(" The manacles set into the walls of this room give you the distinct impression that it was used as a prison and torture chamber, although you can see no evidence of torture devices. There is a golden skull underneath one of the shackles. One particularly large set of manacles -- big enough for an ogre -- have been broken open. There is a portculus at the end of the room.")
     while(RoomFinish2) == 0:
@@ -130,6 +130,9 @@ def Room2():
             time.sleep(1)
             print("There is an iron switch hidden in a copartment towards the back of the skull.")
             time.sleep(3)
+
+        if(TwoChoice.lower()) == "inventory":
+            print(inventory)
 
             
     print("")
@@ -165,6 +168,9 @@ def Room5():
         if(FiveChoice.lower()) == "drink water":
             print("You drink from a coffin, u freak")
 
+        if(FiveChoice.lower()) == "inventory":
+            print(inventory)
+
 
             
 
@@ -198,7 +204,10 @@ def Room4():
             time.sleep(1)
             print("They appear climbable.")
             time.sleep(2)
-
+            
+        if(FourChoice.lower()) == "inventory":
+            print(inventory)
+            
         if(FourChoice.lower()) == "climb bodies":
             if(hatch) == 1:
                 
@@ -227,16 +236,11 @@ def Room6():
     while(RoomFinish6 == 0):
         SixChoice = input("So what's the plan? ")
         
-        if(SixChoice.lower()) == "attack Serpent" or "fight serpent":
-            if "Gold Sword" in inventory:
+        if(SixChoice.lower() == "attack serpent" or SixChoice.lower() == "fight serpent"):
+            if "Gold Sword" or "Iron Sword" in inventory:
                 
                 print("You swing your sword at the beast. YOU HIT! It appears it is wounded")
-                serpent -= 1
-
-
-            if "Iron Sword" in inventory:
-                print("You swing your sword at the beast. YOU HIT! It appears it is wounded")
-                serpent -= 1
+                serpent = 0
 
             else:
                 print("You fool! You are unarmed!")
@@ -249,9 +253,9 @@ def Room6():
                 print("Serpent attacks!")
                 time.sleep(2)
                 print("You have died")
-                start()
+                Room1()
 
-        if(SixChoice.lower()) == "open door" or "go through door":
+        if((SixChoice.lower()) == "open door" or SixChoice.lower() == "go through door"):
             if(serpent) == 0:
                 print("You escaped the room!")
                 RoomFinish6 += 1
@@ -261,7 +265,128 @@ def Room6():
                 print("Serpent attacks!")
                 time.sleep(2)
                 print("You have died")
-                start()
+                Room1()
+
+        if(SixChoice.lower()) == "inventory":
+            print(inventory)
+            
+        Room7()
+spooder = 1
+def Room7():
+    global spooder
+    global inventory
+    global RoomFinish7
+    print("")
+    print("You are now in a cavern with large webbing connecting the corners of the room to each other. There is one web in particular that lead upwards, like a ladder. Suddenly, a spider jumps from the ceiling and onto you!")
+    while(RoomFinish7) == 0:
+        
+        SevenChoice = input("What will you do? ")
+        if(SevenChoice.lower() == "fight spider" or SevenChoice.lower() == "attack spider"):
+            print("You swing your mighty weapon, hitting the beast square in the face. It's head explodes in a firework show of green blood and pus.")
+            spooder -= 1
+            
+
+        if(SevenChoice.lower()) == "climb web":
+            print("You escape the clutches of the cavern, and into the next room.")
+            print("")
+            RoomFinish7 += 1
+
+        if(SevenChoice.lower()) == "inventory":
+            print(inventory)
+            
+    print("")
+    print("You feel that you are approaching a climactic ending...")
+    print("")
+    Room8()
+    
+barricade = 1
+def Room8():
+    global inventory
+    global RoomFinish8
+    global barricade
+    print("You round the corner of the hall to confront a passage nearly blocked with crates, barrels, and chests. It seems someone set them up to barricade the hall. Three barrels are set up as seats near gaps in the barricade, no doubt the place where archers waited for foes. A rusting and torn breastplate hangs from a rope near the wall. There is a door past the barricade.")
+    while(RoomFinish8) == 0:
+        
+        EightChoice = input("So, What's the plan? ")
+        if(EightChoice.lower() == "climb barricade" or EightChoice.lower() == "scale barrier"):
+            barricade -= 1
+            print("You put one hand over the other and find footholds. After what feels like an eternity, you make it over. When you fall to the other side, you are confronted by and armored skeleton. Don't worry, it's dead. ")
+
+        if(EightChoice.lower()) == "open door":
+            if(barricade) == 0:
+                print("You escape the room.")
+                print("")
+                Room9()
+            else:
+                print("Lol, get over the barricade first.")
+
+        if(EightChoice.lower()) == "attack barricade":
+            print("It crumbles before your might.")
+            barricade -= 1
+
+        if(EightChoice.lower()) == "inventory":
+            print(inventory)
+            
+
+
+def Room9():
+    global RoomFinish9
+    global inventory
+    print("Three low, oblong piles of rubble lie near the center of this small room. Each has a weapon jutting upright from one end -- a longsword, a spear, and a quarterstaff. The piles resemble cairns used to bury dead adventurers. There is a diamond gate at the end of the room.")       
+    while(RoomFinish9) == 0:
+        NineChoice = input("So, What's The Plan? ")
+        
+        if(NineChoice.lower()) == "inventory":
+            print(inventory)
+
+        if(NineChoice.lower()) == "take longsword":
+            inventory.append("Long Sword")
+
+        if(NineChoice.lower()) == "take quarterstaff":
+            inventory.append("QStaff")
+
+        if(NineChoice.lower()) == "take spear":
+            inventory.append("Spear")
+
+        if(NineChoice.lower()) == "open gate":
+            print("This is it....")
+            time.sleep(3)
+            print("")
+            print("")
+            print("You go to touch the gate, but it is already opening...")
+            RoomFinish9 += 1
+    Room10()
+
+EBoss = 5
+def Room10():
+    global EBoss
+    global inventory
+    global RoomFinish10
+    print("You are standing in a tower. There is a huge stained-glass window, in which you can see the outline of the sun. There are torches lining the sides of the room. A large figure begins to rise from the center of the room. It is a tentacled horror from before time began, and you recognize it from the fateful day it razed your village. This ends now.")
+    while(RoomFinish10 == 0):
+        TenChoice = input("SO, WHAT'S THE PLAN? ")
+
+        if(TenChoice.lower()) == "attack tentacled horror from before time began":
+            print("")
+            print("The fact that you know the demons true name rips a screech from eldritch lips. It stumbles backwards, and smashes through the window that once prophesized this dawn.")
+            ##End()
+
+        if(TenChoice.lower() == "attack monster" or TenChoice.lower() == "fight monster"):
+           print("You slash at the beast with your weapon...")
+           print("")
+           print("You Hit!")
+           EBoss -= 1
+           print("")
+
+        if(EBoss) == 0:
+            print("")
+
+        
+            
+
+            
+                        
+                
                 
            
                 
@@ -289,6 +414,7 @@ def Room6():
         
 def Room1():
     global RoomFinish1
+    print("You are standing in a stone room, with iron torches lining the walls. There is a diamond-studded chest in the corner, with a large lock on it. Not to mention the large table and wooden door. Too bad there is a huge lock on the door.")       
     while(RoomFinish1) == 0:
         global inventory
         global roomNumber
@@ -358,6 +484,10 @@ def Room1():
             print("As the door swings open, you enter an entirely new room! What a shame that when you enter, the door slams behind you and locks.")
             Room2()
 
+        if(FirstChoice.lower()) == "inventory":
+            print(inventory)
+            
+
         
 
 def start():
@@ -367,12 +497,10 @@ def start():
     print(RoomNo)
     print("")
     if(RoomNo) == 1:
-        print("You are standing in a stone room, with iron torches lining the walls. There is a diamond-studded chest in the corner, with a large lock on it. Not to mention the large table and wooden door. Too bad there is a huge lock on the door.")
         Room1()
 
 
     if(RoomNo) == 2:
-        print("You are standing in a long hallway, with torches across the walls. The floor is tiled, and there are large glowing tiles scampering along the floor. The hall is narrow, so you can go left or right only. You must get this correct, three times, lest you fall to an uncertain fate.")
         Room2()
 
     if(RoomNo) == 3:
@@ -387,11 +515,16 @@ def start():
     if(RoomNo) == 6:
         Room6()
 
+    if(RoomNo) == 7:
+        Room7()
+
+    if(RoomNo) == 8:
+        Room8()
+
+    if(RoomNo) == 9:
+        Room9()
+
 start()
-
-
-
-
 
 
 
