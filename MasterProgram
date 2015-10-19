@@ -340,12 +340,21 @@ def Room9():
             print(inventory)
 
         if(NineChoice.lower()) == "take longsword":
+            print("")
+            print("You take the Longsword")
+            print("")
             inventory.append("Long Sword")
 
         if(NineChoice.lower()) == "take quarterstaff":
+            print("")
+            print("You take the Quarterstaff")
+            print("")
             inventory.append("QStaff")
 
         if(NineChoice.lower()) == "take spear":
+            print("")
+            print("You take the glowing spear")
+            print("")
             inventory.append("Spear")
 
         if(NineChoice.lower()) == "open gate":
@@ -362,25 +371,100 @@ def Room10():
     global EBoss
     global inventory
     global RoomFinish10
-    print("You are standing in a tower. There is a huge stained-glass window, in which you can see the outline of the sun. There are torches lining the sides of the room. A large figure begins to rise from the center of the room. It is a tentacled horror from before time began, and you recognize it from the fateful day it razed your village. This ends now.")
+    print("You are standing in a tower. There is a huge stained-glass window, in which you can see the outline of the sun. There are torches lining the sides of the room. A large figure begins to rise from the center of the room. It is a tentacled horror from before time began, and you recognize it from the fateful day it razed your village. The monster confronts you with the strength of a god. This ends now.")
     while(RoomFinish10 == 0):
         TenChoice = input("SO, WHAT'S THE PLAN? ")
 
         if(TenChoice.lower()) == "attack tentacled horror from before time began":
             print("")
             print("The fact that you know the demons true name rips a screech from eldritch lips. It stumbles backwards, and smashes through the window that once prophesized this dawn.")
-            ##End()
+            RoomFinish10 += 1
+            time.sleep(5)
+            Credits()
 
-        if(TenChoice.lower() == "attack monster" or TenChoice.lower() == "fight monster"):
+        if(TenChoice.lower() == "attack monster" or TenChoice.lower() == "fight monster" or TenChoice.lower() == "attack beast" or TenChoice.lower() == "fight beast" or TenChoice.lower() == "attack creature" or TenChoice.lower() == "fight creature"):
            print("You slash at the beast with your weapon...")
            print("")
            print("You Hit!")
            EBoss -= 1
            print("")
 
-        if(EBoss) == 0:
-            print("")
+        if(TenChoice.lower() == "attack monster with longsword" or TenChoice.lower() == "fight beast with longsword" or TenChoice.lower() == "fight monster with longsword"):
+            if "Long Sword" in inventory:
+                
+                print("InStA KiLl!!1!1!!!!1!!!!")
+                EBoss -= 5
+                print("")
+                print("")
+            else:
+                print("With what now?")
+                print("")
+                print("Monster attacks!")
+                time.sleep(3)
+                print("You have died.")
+                print("")
+                print("")
+                Room1()
+                
+        if(TenChoice.lower() == "attack monster with quarterstaff"):
+            if "QStaff" in inventory:
+                
+                print("You hit!")
+                EBoss -= 3
+                print("")
+                print("")
+            else:
+                print("With what now?")
+                print("")   
+                print("Monster attacks!")
+                time.sleep(3)
+                print("You have died.")
+                print("")
+                print("")
+                Room1()
 
+        if(TenChoice.lower() ==  "attack monster with spear"):
+            if("Spear") in inventory:
+                print("You drive the spear into the heart of the beast, causing it to scream in agony.")
+                EBoss -= 4
+                print("")
+
+            else:
+                print("With what now?")
+                print("")
+                print("Monster attacks!")
+                time.sleep(3)
+                print("You have died.")
+                print("")
+                print("")
+                Room1()
+            
+
+        if(EBoss) <= 0:
+            print("The beast stumbles to it's knees, as it succumbs to the light. As it bursts into undying light, you hear the screams of your deceased villagers, calling out to you. Finally, you can sleep without their voices haunting your mind...")
+            print("")
+            print("")
+            RoomFinish10 += 1
+            time.sleep(5)
+            Credits()
+
+
+def Credits():
+    print("")
+    print(" Code ")
+    print("")
+    print("Simone Alexander")
+    print("")
+    print("")
+    print(" Story ")
+    print("")
+    print("Simone Alexander")
+    print("")
+    print("")
+    print(" Special thanks to: " + characterName + "") 
+    print(" Thanks for playing!!! ")
+    exit()
+    
         
             
 
@@ -476,7 +560,9 @@ def Room1():
         if(FirstChoice.lower()) == "lockpick chest":
             time.sleep(1)
             print("Not bad, not bad. The chest clicks open, seeing as you TOTALLY have a key. There is a major iron key on the metallic floor of the chest.")
-            inventory.append("IKey")        
+            inventory.append("IKey")
+
+        
 
     
         if(RoomFinish1) == 1:
@@ -492,6 +578,9 @@ def Room1():
 
 def start():
     global RoomNo
+    print("")
+    print(" ç∆$†l3 å∂√3n†u®3 ")
+    print("")
     print("The castle looms above you, it's ramparts glaring at you like the beady eyes of Yog-Sothoth himself. The adamantium gate that seperates you from your destiny opens with a clang. It is time you avenge your village...")
     print("")
     print(RoomNo)
@@ -524,7 +613,11 @@ def start():
     if(RoomNo) == 9:
         Room9()
 
+    if(RoomNo) == 10:
+        Room10()
+
 start()
+
 
 
 
